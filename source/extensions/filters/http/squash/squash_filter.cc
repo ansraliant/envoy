@@ -135,7 +135,7 @@ SquashFilter::~SquashFilter() = default;
 
 void SquashFilter::onDestroy() { cleanup(); }
 
-Http::FilterHeadersStatus SquashFilter::decodeHeaders(Http::HeaderMap& headers, bool) {
+Http::FilterHeadersStatus SquashFilter::decodeHeaders(Http::RequestHeaderMap& headers, bool) {
   // Check for squash header
   if (!headers.get(Http::Headers::get().XSquashDebug)) {
     return Http::FilterHeadersStatus::Continue;
@@ -181,7 +181,7 @@ Http::FilterDataStatus SquashFilter::decodeData(Buffer::Instance&, bool) {
   return Http::FilterDataStatus::Continue;
 }
 
-Http::FilterTrailersStatus SquashFilter::decodeTrailers(Http::HeaderMap&) {
+Http::FilterTrailersStatus SquashFilter::decodeTrailers(Http::RequestTrailerMap&) {
   if (is_squashing_) {
     return Http::FilterTrailersStatus::StopIteration;
   }

@@ -63,7 +63,7 @@ public:
   }
 
   // HTTP async receive methods
-  void onSuccess(Http::MessagePtr&& response) override {
+  void onSuccess(Http::ResponseMessagePtr&& response) override {
     ENVOY_LOG(trace, "{}", __func__);
     complete_ = true;
     const uint64_t status_code = Http::Utility::getResponseStatus(response->headers());

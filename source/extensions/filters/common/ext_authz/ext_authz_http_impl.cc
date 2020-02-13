@@ -243,7 +243,7 @@ void RawHttpClientImpl::check(RequestCallbacks& callbacks,
   }
 }
 
-void RawHttpClientImpl::onSuccess(Http::MessagePtr&& message) {
+void RawHttpClientImpl::onSuccess(Http::ResponseMessagePtr&& message) {
   callbacks_->onComplete(toResponse(std::move(message)));
   span_->finishSpan();
   callbacks_ = nullptr;

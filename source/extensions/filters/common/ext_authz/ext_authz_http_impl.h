@@ -150,7 +150,7 @@ public:
              Tracing::Span&) override;
 
   // Http::AsyncClient::Callbacks
-  void onSuccess(Http::MessagePtr&& message) override;
+  void onSuccess(Http::ResponseMessagePtr&& message) override;
   void onFailure(Http::AsyncClient::FailureReason reason) override;
 
 private:

@@ -213,7 +213,7 @@ int StreamHandleWrapper::luaHttpCall(lua_State* state) {
   }
 }
 
-void StreamHandleWrapper::onSuccess(Http::MessagePtr&& response) {
+void StreamHandleWrapper::onSuccess(Http::ResponseMessagePtr&& response) {
   ASSERT(state_ == State::HttpCall || state_ == State::Running);
   ENVOY_LOG(debug, "async HTTP response complete");
   http_request_ = nullptr;

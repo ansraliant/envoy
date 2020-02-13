@@ -29,7 +29,7 @@ public:
   HeaderToFilterStateFilter(const std::string& header, const std::string& state)
       : header_(header), state_(state) {}
 
-  Http::FilterHeadersStatus decodeHeaders(Http::HeaderMap& headers, bool) override {
+  Http::FilterHeadersStatus decodeHeaders(Http::RequestHeaderMap& headers, bool) override {
     const Http::HeaderEntry* entry = headers.get(header_);
     if (entry) {
       decoder_callbacks_->streamInfo().filterState()->setData(

@@ -81,7 +81,7 @@ private:
   }
 
   Key key_;
-  Http::HeaderMapImplPtr response_headers_;
+  Http::ResponseHeaderMapPtr response_headers_;
   SimpleHttpCache& cache_;
   Buffer::OwnedImpl body_;
   bool committed_ = false;

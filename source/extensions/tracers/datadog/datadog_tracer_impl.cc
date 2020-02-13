@@ -114,7 +114,7 @@ void TraceReporter::onFailure(Http::AsyncClient::FailureReason) {
   driver_.tracerStats().reports_failed_.inc();
 }
 
-void TraceReporter::onSuccess(Http::MessagePtr&& http_response) {
+void TraceReporter::onSuccess(Http::ResponseMessagePtr&& http_response) {
   uint64_t responseStatus = Http::Utility::getResponseStatus(http_response->headers());
   if (responseStatus != enumToInt(Http::Code::OK)) {
     // TODO: Consider adding retries for failed submissions.

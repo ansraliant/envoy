@@ -583,7 +583,7 @@ TEST(HttpUtility, TestPrepareHeaders) {
   envoy::config::core::v3::HttpUri http_uri;
   http_uri.set_uri("scheme://dns.name/x/y/z");
 
-  Http::MessagePtr message = Utility::prepareHeaders(http_uri);
+  Http::RequestMessagePtr message = Utility::prepareHeaders(http_uri);
 
   EXPECT_EQ("/x/y/z", message->headers().Path()->value().getStringView());
   EXPECT_EQ("dns.name", message->headers().Host()->value().getStringView());
